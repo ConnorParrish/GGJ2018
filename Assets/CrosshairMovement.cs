@@ -9,14 +9,22 @@ public class CrosshairMovement : MonoBehaviour {
     private Vector3 nextPos;
     public int resetCooldown;
     public int maxRadius;
+    float lastx; 
+    float lasty;
+
 
     // Use this for initialization
     void Start () {
-        usingController = Input.GetJoystickNames().Length == 1 && Input.GetJoystickNames()[0] != "";
+        usingController = Input.GetJoystickNames()[0] != "";
 
         Debug.Log((usingController ? "Using: " + Input.GetJoystickNames()[0] : "Using: Mouse"));
 
         mainCamera = Camera.main;
+        Cursor.visible = false;
+
+        // This is dirty, but it centers the cursor.
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
 	}
 	
 	// Update is called once per frame
@@ -25,14 +33,18 @@ public class CrosshairMovement : MonoBehaviour {
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, .1f);
             resetCooldown = 0;
+            
         }
         
         if (!usingController)
         {
             resetCooldown = (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0) ? resetCooldown - 1 : 50;
-
-            Vector3 pos = Input.mousePosition;
-            nextPos = mainCamera.ScreenToWorldPoint(pos);//new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
+            lastx = Input.GetAxis("Mouse X");
+            lasty = Input.GetAxis("Mouse Y");
+            Vector3 pos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            nextPos = pos;//new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
+            nextPos.z = 0;
+            transform.position = nextPos;
         }
         else
         {
@@ -40,13 +52,16 @@ public class CrosshairMovement : MonoBehaviour {
 
             nextPos.x = Input.GetAxis("RightJoystick X") * speed * Time.deltaTime;
             nextPos.y = Input.GetAxis("RightJoystick Y") * speed * Time.deltaTime;
+            nextPos = nextPos + transform.localPosition;
+            Debug.Log(nextPos);
+
+            if (Mathf.Abs(nextPos.x) > 15)
+                nextPos.x = 0;
+            if (Mathf.Abs(nextPos.y) > 8)
+                nextPos.y = 0;
+            transform.localPosition = nextPos;
         }
 
-        if (Mathf.Abs((transform.localPosition + nextPos).x) > 15)
-            nextPos.x = 0;
-        if (Mathf.Abs((transform.localPosition + nextPos).y) > 8)
-            nextPos.y = 0;
 
-        transform.localPosition += nextPos;
     }
 }

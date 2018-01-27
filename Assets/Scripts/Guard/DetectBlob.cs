@@ -6,9 +6,10 @@ public class DetectBlob : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && !other.isTrigger)
         {
-            other.GetComponent<PlayerDeath>().Die();
+            if(!other.GetComponent<PossessGuard>().possesing)
+                other.GetComponent<PlayerDeath>().Die();
         }
     }
 }

@@ -33,4 +33,9 @@ public class DecayTracker : MonoBehaviour {
         // Update the HUD to show our proper decay time
         HudManager.instance.UpdateDeathSlider(currentDecayTime / decayTime);
 	}
+
+    public void resetDecayTime()
+    {
+        currentDecayTime = decayTime;
+    }
 }

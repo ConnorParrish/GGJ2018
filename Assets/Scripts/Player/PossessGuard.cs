@@ -7,10 +7,35 @@ public class PossessGuard : MonoBehaviour {
     public float possessionRadius = 1;
     public bool canPossess = true;
 
-    private bool possesing = false;
+    public bool possesing = false;
     private Transform possessedGaurd;
-	
-	void Update ()
+    private GameObject candidate;
+
+    private List<int> previouslyPossessed = new List<int>();
+    private GameObject[] allGuards;
+
+    void Start()
+    {
+        allGuards = GameObject.FindGameObjectsWithTag("Guard");
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Guard" && !previouslyPossessed.Contains(other.gameObject.GetInstanceID()))
+        {
+            candidate = other.gameObject;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (candidate != null && other.tag == "Guard" && other.gameObject.GetInstanceID() == candidate.GetInstanceID())
+        {
+            candidate = null;
+        }
+    }
+
+    void Update ()
     {
         // if for any reason we are not wanted to be able to possess, return right away
         if (!canPossess)
@@ -31,18 +56,13 @@ public class PossessGuard : MonoBehaviour {
         }
 
         // if we are hitting the possession key, look for nearby gaurds to possess and start possession on them
-        if (Input.GetAxis("Possess") > 0)
+        if (Input.GetAxis("Possess") > 0 && candidate != null)
         {
-            GameObject[] allGaurds = GameObject.FindGameObjectsWithTag("Guard");
-            for (int i = 0; i < allGaurds.Length; i++)
-            {
-                if((allGaurds[i].transform.localPosition - transform.localPosition).magnitude < possessionRadius)
-                {
-                    transform.localPosition = allGaurds[i].transform.localPosition;
-                    possesing = true;
-                    possessedGaurd = allGaurds[i].transform;
-                }
-            }
+            transform.localPosition = candidate.transform.localPosition;
+            possesing = true;
+            possessedGaurd = candidate.transform;
+            gameObject.GetComponent<DecayTracker>().resetDecayTime();
+            previouslyPossessed.Add(candidate.GetInstanceID());
         }
 	}
 }

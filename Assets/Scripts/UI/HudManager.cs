@@ -11,6 +11,7 @@ public class HudManager : MonoBehaviour {
     // Privates
     Slider DeathSlider;
     GameObject DeathCanvas;
+    GameObject VictorCanvas;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class HudManager : MonoBehaviour {
         // create connections with private
         DeathSlider = transform.Find("DeathTimer").Find("DeathSlider").GetComponent<Slider>();
         DeathCanvas = transform.Find("DeathScreen").gameObject;
+        VictorCanvas = transform.Find("VictoryScreen").gameObject;
     }
 
     // Used to change the position of the slider on the bottom of the screen that tracks our closeness to death
@@ -40,5 +42,8 @@ public class HudManager : MonoBehaviour {
         DeathCanvas.SetActive(true);
     }
 
-
+    public void showVictoryScreen()
+    {
+        VictorCanvas.SetActive(true);
+    }
 }

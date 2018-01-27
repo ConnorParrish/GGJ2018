@@ -4,24 +4,11 @@ using UnityEngine;
 
 public class FollowObject : MonoBehaviour {
 
-    public Transform objectToFollow;
-    public bool preserveOffset = false;
-
-    private Vector3 offset;
-
-	void Start () {
-		if (preserveOffset)
-        {
-            offset = transform.localPosition - objectToFollow.localPosition;
-        }
-        else
-        {
-            offset = new Vector3(0, 0, transform.localPosition.z);
-        }
-	}
-	
+    public List<Transform> objectsToFollow = new List<Transform>(2);
+    public Vector3 zOffset;
+    
 	void Update ()
     {
-        transform.localPosition = objectToFollow.localPosition + offset;
+        transform.position = (objectsToFollow[0].position + objectsToFollow[1].position) / 2 + zOffset;
 	}
 }

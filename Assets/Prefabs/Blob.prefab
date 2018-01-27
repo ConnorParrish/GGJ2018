@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 58408427060564842}
   - component: {fileID: 114171666815949988}
   - component: {fileID: 50158905990089414}
+  - component: {fileID: 58612800267958506}
+  - component: {fileID: 95088606167271084}
   m_Layer: 0
   m_Name: Blob
   m_TagString: Player
@@ -81,6 +83,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.09}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!58 &58612800267958506
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319779894791796}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!95 &95088606167271084
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319779894791796}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8406f9c5eee818a4f8cd222c42156ff2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114171666815949988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possessionRadius: 1
   canPossess: 1
+  possesing: 0
 --- !u!114 &114413311122378182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   movementAllowed: 1
+  movingLeft: 0
+  movingRight: 0
+  movingUp: 0
+  movingDown: 0
+  moving: 0
 --- !u!114 &114707361077010200
 MonoBehaviour:
   m_ObjectHideFlags: 1

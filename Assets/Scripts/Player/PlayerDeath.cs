@@ -9,5 +9,10 @@ public class PlayerDeath : MonoBehaviour {
 	public void Die()
     {
         HudManager.instance.showDeathScreen();
+        GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
+        for (int i = 0; i < guards.Length; i++)
+        {
+            guards[i].GetComponent<GuardAI>().enabled = false;
+        }
     }
 }

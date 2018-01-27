@@ -421,62 +421,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1319779894791796, guid: 4400f8bb7abaa214183a32a0d2a750a4, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 114707361077010200, guid: 4400f8bb7abaa214183a32a0d2a750a4,
-        type: 2}
-      propertyPath: decaying
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212155457620196858, guid: 4400f8bb7abaa214183a32a0d2a750a4,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 95b75ca60454a0a4d97511c1c871c924,
-        type: 3}
-    - target: {fileID: 114413311122378182, guid: 4400f8bb7abaa214183a32a0d2a750a4,
-        type: 2}
-      propertyPath: speed
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4400f8bb7abaa214183a32a0d2a750a4, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &624384190 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1319779894791796, guid: 4400f8bb7abaa214183a32a0d2a750a4,
-    type: 2}
-  m_PrefabInternal: {fileID: 606746535}
---- !u!58 &624384191
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 624384190}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
-  serializedVersion: 2
-  m_Radius: 0.13
---- !u!114 &624384192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 624384190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c99d5a7c517810344b76d4b7c4b7c2f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  possessionRadius: 1
-  canPossess: 1
 --- !u!1 &1378871799
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,23 +665,3 @@ PolygonCollider2D:
     - - {x: 0, y: 0}
       - {x: 0.5, y: 2}
       - {x: -0.5, y: 2}
---- !u!114 &1948875971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1948875965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d255dc75d69d96641af3362c6ac261d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path:
-  - {x: 2, y: 1, z: 0}
-  - {x: -2, y: 1, z: 0}
-  - {x: -2, y: -3, z: 0}
-  speed: 0.3
-  movingUp: 0
-  movingLeft: 0
-  movingRight: 0
-  movingDown: 0

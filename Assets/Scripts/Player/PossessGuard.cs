@@ -19,7 +19,7 @@ public class PossessGuard : MonoBehaviour {
         }
 
         // if the player is trying to move, stop possession
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             possesing = false;
         }

@@ -14,5 +14,6 @@ public class PlayerDeath : MonoBehaviour {
         {
             guards[i].GetComponent<GuardAI>().enabled = false;
         }
+        gameObject.GetComponent<Movement>().movementAllowed = false;
     }
 }

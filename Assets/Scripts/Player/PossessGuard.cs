@@ -12,12 +12,6 @@ public class PossessGuard : MonoBehaviour {
     private GameObject candidate;
 
     private List<int> previouslyPossessed = new List<int>();
-    private GameObject[] allGuards;
-
-    void Start()
-    {
-        allGuards = GameObject.FindGameObjectsWithTag("Guard");
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {

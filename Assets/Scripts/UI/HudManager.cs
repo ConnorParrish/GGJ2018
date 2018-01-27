@@ -10,6 +10,7 @@ public class HudManager : MonoBehaviour {
 
     // Privates
     Slider DeathSlider;
+    GameObject DeathCanvas;
 
     void Start()
     {
@@ -17,9 +18,10 @@ public class HudManager : MonoBehaviour {
 
         // create connections with private
         DeathSlider = transform.Find("DeathTimer").Find("DeathSlider").GetComponent<Slider>();
+        DeathCanvas = transform.Find("DeathScreen").gameObject;
     }
 
-    public void UpdateDeathSlider(int newValue)
+    public void UpdateDeathSlider(float newValue)
     {
         if (newValue > 1 || newValue < 0)
         {
@@ -28,6 +30,11 @@ public class HudManager : MonoBehaviour {
         }
 
         DeathSlider.value = newValue;
+    }
+
+    public void showDeathScreen()
+    {
+        DeathCanvas.SetActive(true);
     }
 
 

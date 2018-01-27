@@ -13,9 +13,6 @@ public class Movement : MonoBehaviour {
         {
             return;
         }
-
-        Debug.Log(Input.GetAxis("Horizontal") + " : " + Input.GetAxis("Vertical"));
-
         transform.localPosition += new Vector3(Input.GetAxis("Horizontal") * speed, 0, 0);
         transform.localPosition += new Vector3(0, Input.GetAxis("Vertical") * speed, 0);
     }

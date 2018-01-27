@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4278974473915320}
   - component: {fileID: 212155457620196858}
   - component: {fileID: 114413311122378182}
+  - component: {fileID: 114707361077010200}
+  - component: {fileID: 114840266126007326}
   m_Layer: 0
   m_Name: Blob
   m_TagString: Untagged
@@ -54,6 +56,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.3
   movementAllowed: 1
+--- !u!114 &114707361077010200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319779894791796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2c6a9069838064e84630d1c138d712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decayTime: 10
+  decaying: 1
+--- !u!114 &114840266126007326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319779894791796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f97915048f809343ae758ffa66ca4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212155457620196858
 SpriteRenderer:
   m_ObjectHideFlags: 1

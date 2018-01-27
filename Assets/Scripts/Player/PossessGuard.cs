@@ -41,6 +41,7 @@ public class PossessGuard : MonoBehaviour {
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             possesing = false;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         // if we are actively possessing, follow the possessed guard
@@ -57,6 +58,7 @@ public class PossessGuard : MonoBehaviour {
             possessedGaurd = candidate.transform;
             gameObject.GetComponent<DecayTracker>().resetDecayTime();
             previouslyPossessed.Add(candidate.GetInstanceID());
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-	}
+    }
 }

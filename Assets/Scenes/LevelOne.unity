@@ -312,6 +312,11 @@ Prefab:
       propertyPath: m_Name
       value: Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
+        type: 2}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfec34918302f9c4b8c5d6fda0039230, type: 2}
   m_IsPrefabParent: 0
@@ -431,6 +436,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 95b75ca60454a0a4d97511c1c871c924,
         type: 3}
+    - target: {fileID: 114413311122378182, guid: 4400f8bb7abaa214183a32a0d2a750a4,
+        type: 2}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4400f8bb7abaa214183a32a0d2a750a4, type: 2}
   m_IsPrefabParent: 0
@@ -708,3 +718,23 @@ PolygonCollider2D:
     - - {x: 0, y: 0}
       - {x: 0.5, y: 2}
       - {x: -0.5, y: 2}
+--- !u!114 &1948875971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1948875965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d255dc75d69d96641af3362c6ac261d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path:
+  - {x: 2, y: 1, z: 0}
+  - {x: -2, y: 1, z: 0}
+  - {x: -2, y: -3, z: 0}
+  speed: 0.3
+  movingUp: 0
+  movingLeft: 0
+  movingRight: 0
+  movingDown: 0

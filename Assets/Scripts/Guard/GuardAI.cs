@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GaurdAI : MonoBehaviour {
+public class GuardAI : MonoBehaviour {
 
     public Vector3[] Path;
     public float speed = .3f;
@@ -24,7 +24,7 @@ public class GaurdAI : MonoBehaviour {
 
     void Update()
     {
-        moveGaurd();
+        moveGuard();
         calcMovementDirection();
     }
 
@@ -51,13 +51,13 @@ public class GaurdAI : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, 0, 270);
     }
 
-    void moveGaurd()
+    void moveGuard()
     {
         // store last pos so we can know the direction we are moving in
         lastPos = transform.localPosition;
         Vector3 direction = Path[targetOnPath] - transform.localPosition;
         // if they are within a certain closeness to their target point, snap to that point and calc the next target point
-        if (direction.magnitude < speed)
+        if (direction.magnitude < speed * Time.deltaTime)
         {
             transform.localPosition = Path[targetOnPath];
             calcNextTarget();
@@ -66,7 +66,7 @@ public class GaurdAI : MonoBehaviour {
         // otherwise move towards target point at speed
         else
         {
-            transform.localPosition += direction.normalized * speed;
+            transform.localPosition += direction.normalized * speed * Time.deltaTime;
         }
     }
 

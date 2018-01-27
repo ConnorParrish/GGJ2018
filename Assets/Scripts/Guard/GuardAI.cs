@@ -42,13 +42,13 @@ public class GuardAI : MonoBehaviour {
 
         // rotate us to face either up, left, right, or down
         if (movingUp)
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 0);
         else if (movingLeft)
-            transform.rotation = Quaternion.Euler(0, 0, 90);
+            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 90);
         else if (movingDown)
-            transform.rotation = Quaternion.Euler(0, 0, 180);
+            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 180);
         else if (movingRight)
-            transform.rotation = Quaternion.Euler(0, 0, 270);
+            transform.GetChild(0).rotation = Quaternion.Euler(0, 0, 270);
     }
 
     void moveGuard()

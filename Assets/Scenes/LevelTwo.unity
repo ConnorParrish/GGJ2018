@@ -4485,12 +4485,17 @@ Prefab:
     - target: {fileID: 114707361077010200, guid: 4400f8bb7abaa214183a32a0d2a750a4,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 50158905990089414, guid: 4400f8bb7abaa214183a32a0d2a750a4,
         type: 2}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114707361077010200, guid: 4400f8bb7abaa214183a32a0d2a750a4,
+        type: 2}
+      propertyPath: decayTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4400f8bb7abaa214183a32a0d2a750a4, type: 2}

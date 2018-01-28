@@ -9,7 +9,7 @@ public class DetectBlob : MonoBehaviour {
         if(other.tag == "Player" && !other.isTrigger)
         {
             if(!other.GetComponent<PossessGuard>().possessing)
-                other.GetComponent<PlayerDeath>().Die();
+                other.GetComponent<Animator>().SetTrigger("death");
         }
     }
 }

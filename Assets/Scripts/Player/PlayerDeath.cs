@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class PlayerDeath : MonoBehaviour {
 
     public GameObject deathScreen;
+    public AudioClip deathSound;
 
     // This class will only contain one method that will take care of everything we need
     // to happen when the player dies.
 	public void Die()
     {
-        HudManager.instance.showDeathScreen();
         GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
         for (int i = 0; i < guards.Length; i++)
         {
@@ -20,6 +20,15 @@ public class PlayerDeath : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameObject.GetComponent<Movement>().movementAllowed = false;
+        gameObject.GetComponent<PossessGuard>().canPossess = false;
+        gameObject.GetComponent<DecayTracker>().decaying = false;
+        gameObject.GetComponent<Animator>().SetTrigger("death");
+        gameObject.GetComponent<AudioSource>().PlayOneShot(deathSound, 1);
+    }
+
+    public void ShowDeathScreen()
+    {
+        HudManager.instance.showDeathScreen();
     }
 
     private void Update()

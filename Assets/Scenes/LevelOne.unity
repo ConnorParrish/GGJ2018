@@ -2430,7 +2430,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4979237658421364, guid: bfec34918302f9c4b8c5d6fda0039230, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.12
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 4979237658421364, guid: bfec34918302f9c4b8c5d6fda0039230, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2463,6 +2463,26 @@ Prefab:
     - target: {fileID: 1561355341363744, guid: bfec34918302f9c4b8c5d6fda0039230, type: 2}
       propertyPath: m_Name
       value: Guard
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
+        type: 2}
+      propertyPath: Path.Array.data[0].x
+      value: -4.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
+        type: 2}
+      propertyPath: Path.Array.data[0].y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
+        type: 2}
+      propertyPath: Path.Array.data[1].x
+      value: 3.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
+        type: 2}
+      propertyPath: Path.Array.data[1].y
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfec34918302f9c4b8c5d6fda0039230, type: 2}

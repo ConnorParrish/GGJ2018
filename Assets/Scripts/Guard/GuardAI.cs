@@ -5,6 +5,7 @@ using UnityEngine;
 public class GuardAI : MonoBehaviour {
 
     public Vector3[] Path;
+    public float[] Delays;
     public float speed = .3f;
 
     public bool movingUp = false;
@@ -18,20 +19,46 @@ public class GuardAI : MonoBehaviour {
     private int targetOnPath = 1;
     private Vector3 lastPos;
 
+    private bool waiting;
+    private float waitTime;
+
     void Start()
     {
         lastPos = transform.localPosition;
         animController = gameObject.GetComponent<Animator>();
+        if(Delays.Length < Path.Length)
+        {
+            Delays = new float[Path.Length];
+            for (int i = 0; i < Delays.Length; i++)
+            {
+                Delays[i] = 0;
+            }
+        }
     }
 
     void Update()
     {
+        if(waiting)
+        {
+            waitTime -= Time.deltaTime;
+            waiting = !(waitTime <= 0);
+            return;
+        }
         moveGuard();
         calcMovementDirection();
     }
 
     void calcMovementDirection()
     {
+        // if we are waiting, do this and just return
+        if (waiting)
+        {
+            animController.SetTrigger("Wait");
+            moving = false;
+            animController.SetBool("moving", moving);
+            return;
+        }
+
         // determine the angle we are facing
         Vector3 facing = transform.localPosition - lastPos;
         float angle = Mathf.Atan2(facing.x, facing.y) * Mathf.Rad2Deg;
@@ -102,5 +129,8 @@ public class GuardAI : MonoBehaviour {
                 backTracking = false;
             }
         }
+
+        waitTime = Delays[targetOnPath];
+        waiting = waitTime != 0;
     }
 }

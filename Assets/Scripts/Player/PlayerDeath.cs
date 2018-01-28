@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour {
 
+    public GameObject deathScreen;
+
     // This class will only contain one method that will take care of everything we need
     // to happen when the player dies.
 	public void Die()
@@ -22,7 +24,7 @@ public class PlayerDeath : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetAxisRaw("Submit") == 1)
+        if (Input.GetAxisRaw("Submit") == 1 && deathScreen.activeSelf)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

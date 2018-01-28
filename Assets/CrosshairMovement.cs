@@ -9,7 +9,7 @@ public class CrosshairMovement : MonoBehaviour {
     private Vector3 nextPos;
     public int resetCooldown;
     public int maxRadius;
-
+    public SpriteRenderer myRenderer;
 
     // Use this for initialization
     void Start () {
@@ -33,6 +33,7 @@ public class CrosshairMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        myRenderer.enabled = (Vector3.Distance(Vector3.zero,transform.localPosition) < .2) ? false : true;
         if (resetCooldown < 1)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, .1f);

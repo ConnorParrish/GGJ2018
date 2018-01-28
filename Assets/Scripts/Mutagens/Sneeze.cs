@@ -19,7 +19,7 @@ public class Sneeze : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         
-        if (Input.GetAxisRaw("Sneeze") == 1 && hasSneezed == false)
+        if (Input.GetAxisRaw("Sneeze") == 1 && hasSneezed == false && transform.parent != null)
         {
             hasSneezed = true;
             spriteRenderer.enabled = true;

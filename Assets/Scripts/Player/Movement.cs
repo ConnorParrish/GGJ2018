@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour {
         // move along the Horizontal and Vertical by the input managers record of those values scaled by speed
         Vector3 nextPos = new Vector3(Input.GetAxis("Horizontal"),
             Input.GetAxis("Vertical"), 0);
+        moving = !(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0);
 
         // For pixel perfect movement
         nextPos.x = RoundToPixel(nextPos.x, 108);
@@ -43,11 +44,10 @@ public class Movement : MonoBehaviour {
 //        transform.position += nextPos * speed * Time.deltaTime;
 
         // determine the angle we are facing
-        Vector3 facing = transform.localPosition - lastPos;
+        Vector3 facing = transform.position + nextPos - lastPos;
         float angle = Mathf.Atan2(facing.x, facing.y) * Mathf.Rad2Deg;
 
         // set movement bools based on that angle value
-        moving = (lastPos != transform.localPosition);
         if (moving)
         {
             movingLeft = (-45 > angle && angle > -135);

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 70459946351805956}
   - component: {fileID: 95595438833131754}
   m_Layer: 0
-  m_Name: Gaurd
+  m_Name: Guard
   m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

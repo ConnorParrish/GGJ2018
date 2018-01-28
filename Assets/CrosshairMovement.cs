@@ -15,7 +15,8 @@ public class CrosshairMovement : MonoBehaviour {
     void Start () {
         try
         {
-            usingController = Input.GetJoystickNames()[0] != "";
+            string[] joysticknames = Input.GetJoystickNames();
+            usingController = joysticknames.Length > 0;
         }
         catch
         {

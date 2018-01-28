@@ -9,6 +9,7 @@ public class Mutagen : MonoBehaviour {
     public enum Mutation { Sneeze, Control }
     public Mutation MutationType = Mutation.Sneeze;
     public GameObject MutagenCanvas;
+    public Sprite MutagenSprite;
 
     private void Update()
     {
@@ -26,6 +27,7 @@ public class Mutagen : MonoBehaviour {
         {
             Debug.Log(MutagenCanvas.transform.GetChild(1).name);
             MutagenCanvas.transform.GetChild(1).GetComponent<Text>().text = "Sneeze!";
+            MutagenCanvas.transform.GetChild(2).GetComponent<Image>().sprite = MutagenSprite;
             MutagenCanvas.transform.GetChild(3).GetComponent<Text>().text = "Press 'Y' to make your host sneeze in front of them! Instantly transmits you to the other host!";
             collision.gameObject.AddComponent<Sneeze>();
         }

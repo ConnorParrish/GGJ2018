@@ -8,7 +8,7 @@ public class DetectBlob : MonoBehaviour {
     {
         if(other.tag == "Player" && !other.isTrigger)
         {
-            if(!other.GetComponent<PossessGuard>().possesing)
+            if(!other.GetComponent<PossessGuard>().possessing)
                 other.GetComponent<PlayerDeath>().Die();
         }
     }

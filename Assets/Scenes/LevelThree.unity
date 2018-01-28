@@ -6277,6 +6277,21 @@ Prefab:
       propertyPath: decaying
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212155457620196858, guid: 4400f8bb7abaa214183a32a0d2a750a4,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212155457620196858, guid: 4400f8bb7abaa214183a32a0d2a750a4,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212155457620196858, guid: 4400f8bb7abaa214183a32a0d2a750a4,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4400f8bb7abaa214183a32a0d2a750a4, type: 2}
   m_IsPrefabParent: 0
@@ -6339,24 +6354,28 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1052364506979410, guid: 46c6961ea7e6d8e4f9e30bf80906d135, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114143614185165828, guid: 46c6961ea7e6d8e4f9e30bf80906d135,
+    - target: {fileID: 114732206629285326, guid: 46c6961ea7e6d8e4f9e30bf80906d135,
         type: 2}
-      propertyPath: m_Color.r
+      propertyPath: m_Text
+      value: / ENTER TO CONTINUE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223843688557356, guid: 46c6961ea7e6d8e4f9e30bf80906d135, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114143614185165828, guid: 46c6961ea7e6d8e4f9e30bf80906d135,
+    - target: {fileID: 224859194933657010, guid: 46c6961ea7e6d8e4f9e30bf80906d135,
         type: 2}
-      propertyPath: m_Color.g
-      value: 1
+      propertyPath: m_AnchoredPosition.x
+      value: -84
       objectReference: {fileID: 0}
-    - target: {fileID: 114143614185165828, guid: 46c6961ea7e6d8e4f9e30bf80906d135,
+    - target: {fileID: 114307347465665648, guid: 46c6961ea7e6d8e4f9e30bf80906d135,
         type: 2}
-      propertyPath: m_Color.b
-      value: 0.21379328
+      propertyPath: m_Text
+      value: / ENTER to CONTINUE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904836507867074, guid: 46c6961ea7e6d8e4f9e30bf80906d135, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46c6961ea7e6d8e4f9e30bf80906d135, type: 2}

@@ -798,7 +798,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CONTINUE
+  m_Text: / ENTER to CONTINUE
 --- !u!114 &114341029307096600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1318,7 +1318,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CONTINUE
+  m_Text: / ENTER TO CONTINUE
 --- !u!114 &114755195593086814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2276,7 +2276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.81852084, y: 0.060185187}
   m_AnchorMax: {x: 0.873, y: 0.15459257}
-  m_AnchoredPosition: {x: -1.7000122, y: 0.7999878}
+  m_AnchoredPosition: {x: -84, y: 0.7999878}
   m_SizeDelta: {x: -3, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224881872856561992

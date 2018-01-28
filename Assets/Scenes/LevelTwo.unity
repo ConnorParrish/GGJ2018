@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4025575}
   - component: {fileID: 4025574}
   m_Layer: 0
-  m_Name: Tilemap Grid (Walls)
+  m_Name: Tilemap Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

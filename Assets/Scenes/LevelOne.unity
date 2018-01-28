@@ -118,47 +118,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4278974473915320, guid: 4400f8bb7abaa214183a32a0d2a750a4,
     type: 2}
   m_PrefabInternal: {fileID: 606746535}
---- !u!1 &284923554
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 284923556}
-  - component: {fileID: 284923555}
-  m_Layer: 0
-  m_Name: Tilemap Grid (Floor)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!156049354 &284923555
-Grid:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 284923554}
-  m_Enabled: 1
-  m_CellSize: {x: 0.5925, y: 0.5925, z: 0}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
---- !u!4 &284923556
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 284923554}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -0.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 286326976}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &286326975
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +129,7 @@ GameObject:
   - component: {fileID: 286326978}
   - component: {fileID: 286326977}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: Tilemap (Floor)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +145,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 284923556}
+  m_Father: {fileID: 2035216663}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &286326977
@@ -2746,7 +2705,7 @@ GameObject:
   - component: {fileID: 870738326}
   - component: {fileID: 870738329}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: Tilemap (Walls)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2763,7 +2722,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2035216663}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!19719996 &870738326
 TilemapCollider2D:
@@ -3947,7 +3906,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1378871799
 GameObject:
@@ -4108,7 +4067,7 @@ GameObject:
   - component: {fileID: 2035216663}
   - component: {fileID: 2035216662}
   m_Layer: 0
-  m_Name: Tilemap Grid (Walls)
+  m_Name: Tilemap Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4135,9 +4094,10 @@ Transform:
   m_LocalPosition: {x: 0.25, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 286326976}
   - {fileID: 870738325}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2048631758 stripped
 Transform:

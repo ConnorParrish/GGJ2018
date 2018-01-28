@@ -18,7 +18,6 @@ public class GuardAI : MonoBehaviour {
 
     void Start()
     {
-        transform.localPosition = Path[0];
         lastPos = transform.localPosition;
     }
 

@@ -3089,31 +3089,6 @@ Prefab:
       propertyPath: m_Name
       value: Guard
       objectReference: {fileID: 0}
-    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
-        type: 2}
-      propertyPath: Path.Array.data[0].x
-      value: -2.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
-        type: 2}
-      propertyPath: Path.Array.data[1].x
-      value: -2.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
-        type: 2}
-      propertyPath: Path.Array.data[1].y
-      value: -1.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
-        type: 2}
-      propertyPath: Path.Array.data[0].y
-      value: 2.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 114913224179707000, guid: bfec34918302f9c4b8c5d6fda0039230,
-        type: 2}
-      propertyPath: movingLeft
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfec34918302f9c4b8c5d6fda0039230, type: 2}
   m_IsPrefabParent: 0

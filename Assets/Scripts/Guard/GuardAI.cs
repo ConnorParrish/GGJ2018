@@ -11,7 +11,9 @@ public class GuardAI : MonoBehaviour {
     public bool movingLeft = false;
     public bool movingRight = false;
     public bool movingDown = false;
+    public bool moving = false;
 
+    private Animator animController;
     private bool backTracking = false;
     private int targetOnPath = 1;
     private Vector3 lastPos;
@@ -19,6 +21,7 @@ public class GuardAI : MonoBehaviour {
     void Start()
     {
         lastPos = transform.localPosition;
+        animController = gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -33,11 +36,20 @@ public class GuardAI : MonoBehaviour {
         Vector3 facing = transform.localPosition - lastPos;
         float angle = Mathf.Atan2(facing.x, facing.y) * Mathf.Rad2Deg;
 
-        // set movement bools based on that angle value
-        movingLeft = (-45 > angle && angle > -135);
-        movingDown = (-135 > angle || 135 < angle);
-        movingUp = (-45 < angle && 45 > angle);
-        movingRight = (45 < angle && 135 > angle);
+        moving = (lastPos != transform.localPosition);
+        if (moving)
+        {
+            movingLeft = (-45 > angle && angle > -135);
+            movingDown = (-135 > angle || 135 < angle);
+            movingUp = (-45 < angle && 45 > angle);
+            movingRight = (45 < angle && 135 > angle);
+        }
+
+        animController.SetBool("movingRight", movingRight);
+        animController.SetBool("movingLeft", movingLeft);
+        animController.SetBool("movingUp", movingUp);
+        animController.SetBool("movingDown", movingDown);
+        animController.SetBool("moving", moving);
 
         // rotate us to face either up, left, right, or down
         if (movingUp)

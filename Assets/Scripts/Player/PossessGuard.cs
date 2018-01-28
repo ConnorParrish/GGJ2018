@@ -7,6 +7,7 @@ public class PossessGuard : MonoBehaviour {
     public float possessionRadius = 1;
     public bool canPossess = true;
     public AudioClip possessionSound;
+    public Sprite selectorSprite;
 
     public bool possessing = false;
     private Transform possessedGaurd;
@@ -29,6 +30,22 @@ public class PossessGuard : MonoBehaviour {
         if (other.tag == "Guard" && !possessing)
         {
             candidate = other.gameObject;
+            GameObject selectorObject = new GameObject();
+            SpriteRenderer temp = selectorObject.AddComponent<SpriteRenderer>();
+            temp.sprite = selectorSprite;
+            temp.sortingLayerName = "Foreground";
+            temp.color = new Color(.4f, 1f, .4f);
+            selectorObject.transform.parent = candidate.transform;
+            selectorObject.transform.localPosition = new Vector3(0, -.53f, 0);
+            selectorObject.name = "SelectionCursor";
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Guard")
+        {
+            Destroy(other.gameObject.transform.Find("SelectionCursor").gameObject);
         }
     }
 

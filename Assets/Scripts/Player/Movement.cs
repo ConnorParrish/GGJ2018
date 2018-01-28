@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour {
         // move along the Horizontal and Vertical by the input managers record of those values scaled by speed
         Vector3 nextPos = new Vector3(Input.GetAxis("Horizontal"),
             Input.GetAxis("Vertical"), 0);
-        moving = !(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0);
+        moving = !(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0);
 
         // For pixel perfect movement
         nextPos.x = RoundToPixel(nextPos.x, 108);
@@ -59,7 +59,6 @@ public class Movement : MonoBehaviour {
             movingUp = (-45 < angle && 45 > angle);
             movingRight = (45 < angle && 135 > angle);
         }
-        
 
         animController.SetBool("movingRight", movingRight);
         animController.SetBool("movingLeft", movingLeft);

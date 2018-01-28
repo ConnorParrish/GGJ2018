@@ -84,7 +84,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.5833333
+  - time: 0.5
     functionName: HandlePossession
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: c99d5a7c517810344b76d4b7c4b7c2f7,

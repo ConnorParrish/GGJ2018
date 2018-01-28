@@ -12,7 +12,6 @@ public class Mutagen : MonoBehaviour {
 
     private void Update()
     {
-        Debug.Log(Input.GetAxisRaw("Submit"));
         if (MutagenCanvas.activeSelf == true && Input.GetAxisRaw("Submit") == 1)
         {
             MutagenCanvas.SetActive(false);

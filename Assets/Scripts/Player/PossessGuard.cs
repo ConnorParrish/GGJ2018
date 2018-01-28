@@ -13,10 +13,12 @@ public class PossessGuard : MonoBehaviour {
     private Animator animController;
 
     private List<int> previouslyPossessed = new List<int>();
+    private FollowObject mainCamFollow;
 
     private void Start()
     {
         animController = gameObject.GetComponent<Animator>();
+        mainCamFollow = GameObject.FindWithTag("MainCamera").GetComponent<FollowObject>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -49,6 +51,7 @@ public class PossessGuard : MonoBehaviour {
             possessing = false;
             transform.SetParent(null);
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            animController.SetTrigger("endingPossession");
         }
 
         // if we are actively possessing, follow the possessed guard
@@ -59,6 +62,7 @@ public class PossessGuard : MonoBehaviour {
         if (Input.GetAxisRaw("Possess") == 1 && !possessing && candidate != null)
         {
             possessing = true;
+            mainCamFollow.enabled = false;
             animController.SetTrigger("takingOver");
         }
     }
@@ -66,6 +70,7 @@ public class PossessGuard : MonoBehaviour {
     public void HandlePossession()
     {
         possessing = true;
+        mainCamFollow.enabled = true;
         //transform.localPosition = candidate.transform.localPosition;
         //possessedGaurd = candidate.transform;
         gameObject.GetComponent<DecayTracker>().resetDecayTime();

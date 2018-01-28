@@ -5,10 +5,16 @@ using UnityEngine;
 public class Mutagen : MonoBehaviour {
 
     public GameObject Player;
+    public enum Mutation { Sneeze, Control }
+    public Mutation MutationType = Mutation.Sneeze;
 
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (MutationType == Mutation.Sneeze)
+            collision.gameObject.AddComponent<Sneeze>();
+        //else if (MutationType == Mutation.Control)
+        //    collider.gameObject.AddComponent<>
+
+        gameObject.SetActive(false);
+    }
 }

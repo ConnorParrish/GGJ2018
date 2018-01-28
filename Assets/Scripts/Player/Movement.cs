@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour {
     public bool movingDown = false;
     public bool moving = false;
 
+    public bool pixelPerfectMovement;
+
     private Vector3 lastPos;
 
     private Animator animController;
@@ -31,8 +33,14 @@ public class Movement : MonoBehaviour {
             return;
         }
         // move along the Horizontal and Vertical by the input managers record of those values scaled by speed
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 
-            Input.GetAxis("Vertical"), 0) * speed * Time.deltaTime);
+        Vector3 nextPos = new Vector3(Input.GetAxis("Horizontal"),
+            Input.GetAxis("Vertical"), 0);
+
+        // For pixel perfect movement
+        nextPos.x = RoundToPixel(nextPos.x, 108);
+        nextPos.y = RoundToPixel(nextPos.y, 108);
+        gameObject.GetComponent<Rigidbody2D>().MovePosition(transform.position + nextPos * speed * Time.deltaTime);
+//        transform.position += nextPos * speed * Time.deltaTime;
 
         // determine the angle we are facing
         Vector3 facing = transform.localPosition - lastPos;
@@ -58,5 +66,20 @@ public class Movement : MonoBehaviour {
 
         // record the current position as our last position
         lastPos = transform.localPosition;
+
+    }
+
+    public float RoundToPixel(float input, float pixelsPerunit)
+    {
+        input *= pixelsPerunit;
+        input = Mathf.Round(input);
+        input /= pixelsPerunit;
+        return input;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.GetType() == typeof(UnityEngine.Tilemaps.TilemapCollider2D))
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 }

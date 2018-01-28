@@ -9,6 +9,17 @@ public class FollowObject : MonoBehaviour {
     
 	void Update ()
     {
-        transform.position = (objectsToFollow[0].position + objectsToFollow[1].position) / 2 + zOffset;
+        Vector3 nextPos = (objectsToFollow[0].position + objectsToFollow[1].position) / 2 + zOffset;
+        nextPos.x = RoundToPixel(nextPos.x, 108);
+        nextPos.y = RoundToPixel(nextPos.y, 108);
+        transform.position = nextPos;
 	}
+
+    public float RoundToPixel(float input, float pixelsPerunit)
+    {
+        input *= pixelsPerunit;
+        input = Mathf.Round(input);
+        input /= pixelsPerunit;
+        return input;
+    }
 }

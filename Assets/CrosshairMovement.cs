@@ -13,8 +13,14 @@ public class CrosshairMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        usingController = Input.GetJoystickNames()[0] != "";
-
+        try
+        {
+            usingController = Input.GetJoystickNames()[0] != "";
+        }
+        catch
+        {
+            usingController = false;
+        }
         Debug.Log((usingController ? "Using: " + Input.GetJoystickNames()[0] : "Using: Mouse"));
 
         mainCamera = Camera.main;
@@ -47,8 +53,11 @@ public class CrosshairMovement : MonoBehaviour {
 
             if (Input.GetButton("Fire3"))
             {
-                Vector3 nextPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                nextPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                nextPos.x = RoundToPixel(nextPos.x, 108);
+                nextPos.y = RoundToPixel(nextPos.y, 108);
                 nextPos.z = 0;
+
                 transform.position = Vector3.Lerp(transform.position, nextPos, .1f);
             }
             if (Input.GetButtonDown("Fire3"))
@@ -66,6 +75,9 @@ public class CrosshairMovement : MonoBehaviour {
 
             nextPos.x = Input.GetAxis("RightJoystick X") * speed * Time.deltaTime;
             nextPos.y = Input.GetAxis("RightJoystick Y") * speed * Time.deltaTime;
+            nextPos.x = RoundToPixel(nextPos.x, 108);
+            nextPos.y = RoundToPixel(nextPos.y, 108);
+
             nextPos = nextPos + transform.localPosition;
             
             if (Mathf.Abs(nextPos.x) > 15)
@@ -75,6 +87,13 @@ public class CrosshairMovement : MonoBehaviour {
             transform.localPosition = nextPos;
         }
 
+    }
 
+    public float RoundToPixel(float input, float pixelsPerunit)
+    {
+        input *= pixelsPerunit;
+        input = Mathf.Round(input);
+        input /= pixelsPerunit;
+        return input;
     }
 }

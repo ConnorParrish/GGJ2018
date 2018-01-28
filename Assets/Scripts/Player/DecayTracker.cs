@@ -26,7 +26,7 @@ public class DecayTracker : MonoBehaviour {
         // if we have ran out of decay time, call Die on the player and stop decaying
         if (currentDecayTime < 0)
         {
-            gameObject.GetComponent<Animator>().SetTrigger("death");
+            gameObject.GetComponent<PlayerDeath>().Die();
             decaying = false;
             currentDecayTime = 0;
         }

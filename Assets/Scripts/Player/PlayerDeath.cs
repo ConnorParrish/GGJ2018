@@ -11,7 +11,6 @@ public class PlayerDeath : MonoBehaviour {
     // to happen when the player dies.
 	public void Die()
     {
-        HudManager.instance.showDeathScreen();
         GameObject[] guards = GameObject.FindGameObjectsWithTag("Guard");
         for (int i = 0; i < guards.Length; i++)
         {
@@ -20,6 +19,14 @@ public class PlayerDeath : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameObject.GetComponent<Movement>().movementAllowed = false;
+        gameObject.GetComponent<PossessGuard>().canPossess = false;
+        gameObject.GetComponent<DecayTracker>().decaying = false;
+        gameObject.GetComponent<Animator>().SetTrigger("death");
+    }
+
+    public void ShowDeathScreen()
+    {
+        HudManager.instance.showDeathScreen();
     }
 
     private void Update()

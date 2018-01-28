@@ -25,7 +25,11 @@ public class Movement : MonoBehaviour {
         animController = gameObject.GetComponent<Animator>();
     }
 
-	void Update ()
+    private void OnEnable()
+    {
+        lastPos = transform.localPosition;
+    }
+    void Update ()
     {
         // if movement is not allowed, return
         if(!movementAllowed)

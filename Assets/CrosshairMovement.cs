@@ -9,8 +9,6 @@ public class CrosshairMovement : MonoBehaviour {
     private Vector3 nextPos;
     public int resetCooldown;
     public int maxRadius;
-    float lastx; 
-    float lasty;
 
 
     // Use this for initialization
@@ -24,7 +22,6 @@ public class CrosshairMovement : MonoBehaviour {
 
         // This is dirty, but it centers the cursor.
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.lockState = CursorLockMode.None;
 	}
 	
 	// Update is called once per frame
@@ -33,18 +30,26 @@ public class CrosshairMovement : MonoBehaviour {
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, .1f);
             resetCooldown = 0;
-            
         }
         
         if (!usingController)
         {
-            resetCooldown = (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0) ? resetCooldown - 1 : 50;
-            lastx = Input.GetAxis("Mouse X");
-            lasty = Input.GetAxis("Mouse Y");
-            Vector3 pos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            nextPos = pos;//new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
-            nextPos.z = 0;
-            transform.position = nextPos;
+//            resetCooldown = (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0) ? resetCooldown - 1 : 50;
+
+            if (Input.GetButton("Fire3"))
+            {
+                Vector3 nextPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                nextPos.z = 0;
+                transform.position = Vector3.Lerp(transform.position, nextPos, .1f);
+            }
+            if (Input.GetButtonDown("Fire3"))
+                Cursor.lockState = CursorLockMode.None;
+            if (Input.GetButtonUp("Fire3"))
+            {
+                resetCooldown = 0;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+//            transform.position = nextPos;
         }
         else
         {
@@ -53,8 +58,7 @@ public class CrosshairMovement : MonoBehaviour {
             nextPos.x = Input.GetAxis("RightJoystick X") * speed * Time.deltaTime;
             nextPos.y = Input.GetAxis("RightJoystick Y") * speed * Time.deltaTime;
             nextPos = nextPos + transform.localPosition;
-            Debug.Log(nextPos);
-
+            
             if (Mathf.Abs(nextPos.x) > 15)
                 nextPos.x = 0;
             if (Mathf.Abs(nextPos.y) > 8)

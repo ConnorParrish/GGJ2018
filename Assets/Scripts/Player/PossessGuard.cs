@@ -10,8 +10,9 @@ public class PossessGuard : MonoBehaviour {
     public bool possessing = false;
     private Transform possessedGaurd;
     private GameObject candidate;
+    private Animator candidate_anim;
     private Animator animController;
-
+    private Movement playerMovement;
     private List<int> previouslyPossessed = new List<int>();
     private FollowObject mainCamFollow;
 
@@ -19,6 +20,7 @@ public class PossessGuard : MonoBehaviour {
     {
         animController = gameObject.GetComponent<Animator>();
         mainCamFollow = GameObject.FindWithTag("MainCamera").GetComponent<FollowObject>();
+        playerMovement = GetComponent<Movement>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -64,6 +66,10 @@ public class PossessGuard : MonoBehaviour {
             possessing = true;
             mainCamFollow.enabled = false;
             animController.SetTrigger("takingOver");
+            //playerMovement.movingDown = candidate_anim.GetBool("movingDown");
+            //playerMovement.movingUp = candidate_anim.GetBool("movingUp");
+            //playerMovement.movingLeft = candidate_anim.GetBool("movingLeft");
+            //playerMovement.movingRight = candidate_anim.GetBool("movingRight");
         }
     }
 
@@ -74,10 +80,18 @@ public class PossessGuard : MonoBehaviour {
         //transform.localPosition = candidate.transform.localPosition;
         //possessedGaurd = candidate.transform;
         gameObject.GetComponent<DecayTracker>().resetDecayTime();
-        previouslyPossessed.Add(candidate.GetInstanceID());
+        //previouslyPossessed.Add(candidate.GetInstanceID());
+        candidate.GetComponent<CapsuleCollider2D>().enabled = false;
         animController.SetBool("moving", false);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         transform.SetParent(candidate.transform);
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        candidate_anim = transform.parent.GetComponent<Animator>();
+    }
+
+    public void AimingSneeze()
+    {
+        candidate_anim.enabled = false;
+        possessing = false;
     }
 }

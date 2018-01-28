@@ -22,6 +22,7 @@ public class CrosshairMovement : MonoBehaviour {
 
         // This is dirty, but it centers the cursor.
         Cursor.lockState = CursorLockMode.Locked;
+        
 	}
 	
 	// Update is called once per frame
@@ -30,6 +31,14 @@ public class CrosshairMovement : MonoBehaviour {
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, .1f);
             resetCooldown = 0;
+
+            // TODO: Hide when it returns;
+            if (transform.localPosition == Vector3.zero)
+            {
+                
+            }
+
+
         }
         
         if (!usingController)
@@ -60,9 +69,9 @@ public class CrosshairMovement : MonoBehaviour {
             nextPos = nextPos + transform.localPosition;
             
             if (Mathf.Abs(nextPos.x) > 15)
-                nextPos.x = 0;
+                nextPos.x = transform.localPosition.x;
             if (Mathf.Abs(nextPos.y) > 8)
-                nextPos.y = 0;
+                nextPos.y = transform.localPosition.y;
             transform.localPosition = nextPos;
         }
 

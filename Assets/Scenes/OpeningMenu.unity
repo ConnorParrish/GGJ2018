@@ -2284,7 +2284,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Infect me with space!
+  m_Text: Infect me with space/A!
 --- !u!222 &1404661629
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6340,6 +6340,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1904836507867074, guid: 46c6961ea7e6d8e4f9e30bf80906d135, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46c6961ea7e6d8e4f9e30bf80906d135, type: 2}
   m_IsPrefabParent: 0
@@ -6783,7 +6787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hold shift to look around!
+  m_Text: Left Stick/Shift Look Around!
 --- !u!222 &1856863145
 CanvasRenderer:
   m_ObjectHideFlags: 0

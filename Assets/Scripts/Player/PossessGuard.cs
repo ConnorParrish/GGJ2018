@@ -11,11 +11,11 @@ public class PossessGuard : MonoBehaviour {
     public bool possessing = false;
     private Transform possessedGaurd;
     private GameObject candidate;
-    private Animator candidate_anim;
     private Animator animController;
     private Movement playerMovement;
-    private List<int> previouslyPossessed = new List<int>();
     private FollowObject mainCamFollow;
+
+    private float delayBeforeExit = 0f;
 
     private void Start()
     {
@@ -26,17 +26,9 @@ public class PossessGuard : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Guard" && !previouslyPossessed.Contains(other.gameObject.GetInstanceID()))
+        if (other.tag == "Guard")
         {
             candidate = other.gameObject;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (!possessing && candidate != null && other.tag == "Guard" && other.gameObject.GetInstanceID() == candidate.GetInstanceID())
-        {
-            candidate = null;
         }
     }
 
@@ -48,18 +40,28 @@ public class PossessGuard : MonoBehaviour {
             return;
         }
 
-        // if the player is trying to move, stop possession
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        // if we are actively possessing, follow the possessed guard
+        if (possessing && transform.parent != null)
+            transform.localPosition = Vector3.zero;
+
+        // if there is a delay waiting, deal with that before allowing the player to leave or possess again
+        if (delayBeforeExit > 0)
         {
+            delayBeforeExit -= Time.deltaTime;
+            Debug.Log("delaying before allow exit");
+            return;
+        }
+
+        // if the player is trying to move, stop possession
+        if (possessing && (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0))
+        {
+            gameObject.GetComponent<Movement>().enabled = true;
             possessing = false;
+            candidate = null;
             transform.SetParent(null);
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             animController.SetTrigger("endingPossession");
         }
-
-        // if we are actively possessing, follow the possessed guard
-        if (possessing && transform.parent != null)
-            transform.localPosition = Vector3.zero;
 
         // if we are hitting the possession key, look for nearby gaurds to possess and start possession on them
         if (Input.GetAxisRaw("Possess") == 1 && !possessing && candidate != null)
@@ -67,30 +69,21 @@ public class PossessGuard : MonoBehaviour {
             possessing = true;
             mainCamFollow.enabled = false;
             animController.SetTrigger("takingOver");
-            if(!gameObject.GetComponent<AudioSource>().isPlaying)
+            gameObject.GetComponent<Movement>().enabled = false;
+            delayBeforeExit = 2f;
+            if (!gameObject.GetComponent<AudioSource>().isPlaying)
                 gameObject.GetComponent<AudioSource>().PlayOneShot(possessionSound, .5f);
         }
     }
 
     public void HandlePossession()
     {
-        possessing = true;
         mainCamFollow.enabled = true;
-        //transform.localPosition = candidate.transform.localPosition;
-        //possessedGaurd = candidate.transform;
         gameObject.GetComponent<DecayTracker>().resetDecayTime();
-        //previouslyPossessed.Add(candidate.GetInstanceID());
         candidate.GetComponent<CapsuleCollider2D>().enabled = false;
         animController.SetBool("moving", false);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         transform.SetParent(candidate.transform);
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        candidate_anim = transform.parent.GetComponent<Animator>();
-    }
-
-    public void AimingSneeze()
-    {
-        candidate_anim.enabled = false;
-        possessing = false;
     }
 }

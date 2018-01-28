@@ -6,6 +6,7 @@ public class PossessGuard : MonoBehaviour {
 
     public float possessionRadius = 1;
     public bool canPossess = true;
+    public AudioClip possessionSound;
 
     public bool possessing = false;
     private Transform possessedGaurd;
@@ -64,6 +65,8 @@ public class PossessGuard : MonoBehaviour {
             possessing = true;
             mainCamFollow.enabled = false;
             animController.SetTrigger("takingOver");
+            if(!gameObject.GetComponent<AudioSource>().isPlaying)
+                gameObject.GetComponent<AudioSource>().PlayOneShot(possessionSound, .5f);
         }
     }
 

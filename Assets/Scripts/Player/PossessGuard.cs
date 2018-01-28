@@ -26,7 +26,7 @@ public class PossessGuard : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Guard")
+        if (other.tag == "Guard" && !possessing)
         {
             candidate = other.gameObject;
         }
@@ -56,6 +56,7 @@ public class PossessGuard : MonoBehaviour {
         {
             gameObject.GetComponent<Movement>().enabled = true;
             possessing = false;
+            candidate.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
             candidate = null;
             transform.SetParent(null);
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -80,6 +81,7 @@ public class PossessGuard : MonoBehaviour {
         mainCamFollow.enabled = true;
         gameObject.GetComponent<DecayTracker>().resetDecayTime();
         candidate.GetComponent<CapsuleCollider2D>().enabled = false;
+        candidate.GetComponent<SpriteRenderer>().color = new Color(.6f, 1f, .6f);
         animController.SetBool("moving", false);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         transform.SetParent(candidate.transform);

@@ -48,7 +48,6 @@ public class PossessGuard : MonoBehaviour {
         if (delayBeforeExit > 0)
         {
             delayBeforeExit -= Time.deltaTime;
-            Debug.Log("delaying before allow exit");
             return;
         }
 
@@ -70,7 +69,7 @@ public class PossessGuard : MonoBehaviour {
             mainCamFollow.enabled = false;
             animController.SetTrigger("takingOver");
             gameObject.GetComponent<Movement>().enabled = false;
-            delayBeforeExit = 2f;
+            delayBeforeExit = 1f;
             if (!gameObject.GetComponent<AudioSource>().isPlaying)
                 gameObject.GetComponent<AudioSource>().PlayOneShot(possessionSound, .5f);
         }

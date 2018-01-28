@@ -15,6 +15,7 @@ public class PlayerDeath : MonoBehaviour {
             guards[i].GetComponent<GuardAI>().enabled = false;
         }
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         gameObject.GetComponent<Movement>().movementAllowed = false;
     }
 }

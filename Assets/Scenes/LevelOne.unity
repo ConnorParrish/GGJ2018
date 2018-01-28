@@ -4045,7 +4045,7 @@ MonoBehaviour:
   objectsToFollow:
   - {fileID: 186725423}
   - {fileID: 2048631758}
-  zOffset: {x: 0, y: 0, z: -20}
+  zOffset: {x: 0, y: 0, z: -9.82}
 --- !u!1001 &1939082058
 Prefab:
   m_ObjectHideFlags: 0

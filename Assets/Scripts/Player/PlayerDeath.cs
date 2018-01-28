@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour {
 
@@ -17,5 +18,11 @@ public class PlayerDeath : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameObject.GetComponent<Movement>().movementAllowed = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxisRaw("Submit") == 1)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

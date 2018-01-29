@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using XInputDotNetPure;
 
 public class PlayerDeath : MonoBehaviour {
 
@@ -29,6 +30,17 @@ public class PlayerDeath : MonoBehaviour {
     public void ShowDeathScreen()
     {
         HudManager.instance.showDeathScreen();
+        EndRumble();
+    }
+
+    public void StartRumble()
+    {
+        GamePad.SetVibration(0, 10f, 10f);
+    }
+
+    public void EndRumble()
+    {
+        GamePad.SetVibration(0, 0f, 0f);
     }
 
     private void Update()

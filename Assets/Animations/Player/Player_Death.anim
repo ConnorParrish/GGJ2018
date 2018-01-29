@@ -93,6 +93,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
+  - time: 0
+    functionName: StartRumble
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 1f97915048f809343ae758ffa66ca4c8,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.75
     functionName: ShowDeathScreen
     data: 

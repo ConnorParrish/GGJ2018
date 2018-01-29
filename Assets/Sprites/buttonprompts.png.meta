@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 119d2fc976365a44294eb78559f3f90c
-timeCreated: 1517123444
+timeCreated: 1517184845
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -22,6 +22,7 @@ TextureImporter:
     21300030: buttonprompts_lbumpertext
     21300032: buttonprompts_rbumper
     21300034: buttonprompts_rbumpertext
+    21300036: buttonprompts_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -375,6 +376,20 @@ TextureImporter:
         height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buttonprompts_0
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 49
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
